@@ -3,7 +3,7 @@ import { Cart, FlexContent, Footer, Hero, Navbar, Sales, Stories } from './compo
 import { heroapi, popularsales, toprateslaes, highlight, sneaker, story, footerAPI } from './data/data.js';
 
 const App = () => {
-  return (
+  return 
    <>
       <Navbar/>
       <Cart />
