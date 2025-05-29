@@ -1,5 +1,5 @@
-import React, { lazy, Suspense, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { lazy, Suspense, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCartItems,
   selectCartState,
@@ -8,12 +8,12 @@ import {
   setClearCartItems,
   setCloseCart,
   setGetTotals,
-} from "../app/features/cart/cartSlice.js";
+} from '../app/features/cart/cartSlice.js';
 
 // Lazy-loaded components
-const CartCount = lazy(() => import("../components/cart/CartCount.jsx"));
-const CartEmpty = lazy(() => import("../components/cart/CartEmpty.jsx"));
-const CartItem = lazy(() => import("../components/cart/CartItem.jsx"));
+const CartCount = lazy(() => import('../components/cart/CartCount.jsx'));
+const CartEmpty = lazy(() => import('../components/cart/CartEmpty.jsx'));
+const CartItem = lazy(() => import('../components/cart/CartItem.jsx'));
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -38,15 +38,15 @@ const Cart = () => {
     <div
       className={`fixed inset-0 blur-effect-theme duration-500 w-full h-screen z-[250] ${
         ifCartState
-          ? "opacity-100 visible translate-x-0"
-          : "opacity-0 invisible translate-x-8"
+          ? 'opacity-100 visible translate-x-0'
+          : 'opacity-0 invisible translate-x-8'
       }`}
     >
       <div
         className={`blur-effect-theme duration-500 h-screen max-w-xl w-full absolute right-0 ${
           ifCartState
-            ? "opacity-100 visible translate-x-0"
-            : "opacity-0 invisible translate-x-8"
+            ? 'opacity-100 visible translate-x-0'
+            : 'opacity-0 invisible translate-x-8'
         }`}
       >
         <Suspense

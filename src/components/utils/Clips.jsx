@@ -1,5 +1,5 @@
-import React from "react";
-import { PlayIcon } from "@heroicons/react/24/solid";
+import React from 'react';
+import { PlayIcon } from '@heroicons/react/24/solid';
 
 const Clips = ({ clip, imgsrc }) => {
   return (

@@ -1,11 +1,11 @@
-import React, { lazy, Suspense } from "react";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import React, { lazy, Suspense } from 'react';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/css';
-import { HashtagIcon, HeartIcon } from "@heroicons/react/24/solid";
-import { ClockIcon } from "@heroicons/react/24/outline";
-import { truncate } from "lodash";
+import { HashtagIcon, HeartIcon } from '@heroicons/react/24/solid';
+import { ClockIcon } from '@heroicons/react/24/outline';
+import { truncate } from 'lodash';
 
-const Title = lazy(() => import("../utils/Title"));
+const Title = lazy(() => import('../utils/Title'));
 
 const Stories = ({ story: { title, news } }) => {
   const splideOptions = {
@@ -28,7 +28,9 @@ const Stories = ({ story: { title, news } }) => {
 
   return (
     <div className="nike-container mb-11">
-      <Suspense fallback={<div className="text-center text-sm">Loading title...</div>}>
+      <Suspense
+        fallback={<div className="text-center text-sm">Loading title...</div>}
+      >
         <Title title={title} />
       </Suspense>
 
@@ -55,12 +57,18 @@ const Stories = ({ story: { title, news } }) => {
                   </div>
                   <div className="flex items-center gap-0.5">
                     <HashtagIcon className="icon-style text-blue-600" />
-                    <span className="text-xs font-bold text-blue-600">{val.by}</span>
+                    <span className="text-xs font-bold text-blue-600">
+                      {val.by}
+                    </span>
                   </div>
                 </div>
                 <div className="grid items-center justify-items-start px-4">
-                  <h1 className="text-base font-semibold lg:text-sm">{val.title}</h1>
-                  <p className="text-sm text-justify lg:text-xs">{truncate(val.text, { length: 175 })}</p>
+                  <h1 className="text-base font-semibold lg:text-sm">
+                    {val.title}
+                  </h1>
+                  <p className="text-sm text-justify lg:text-xs">
+                    {truncate(val.text, { length: 175 })}
+                  </p>
                 </div>
                 <div className="flex items-center justify-center px-4 w-full">
                   <a

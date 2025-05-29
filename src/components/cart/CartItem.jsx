@@ -1,11 +1,11 @@
-import React from "react";
-import { MinusIcon, PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { useDispatch } from 'react-redux';
 import {
   setDecreaseItemQTY,
   setIncreaseItemQTY,
   setRemoveItemFromCart,
-} from "../../app/features/cart/cartSlice.js";
+} from '../../app/features/cart/cartSlice.js';
 
 const CartItem = ({
   item: { id, title, text, img, color, shadow, price, cartQuantity },
@@ -23,7 +23,7 @@ const CartItem = ({
         shadow,
         price,
         cartQuantity,
-      })
+      }),
     );
   };
 
@@ -38,7 +38,7 @@ const CartItem = ({
         shadow,
         price,
         cartQuantity,
-      })
+      }),
     );
   };
   const onDecreaseItemQTY = () => {
@@ -52,7 +52,7 @@ const CartItem = ({
         shadow,
         price,
         cartQuantity,
-      })
+      }),
     );
   };
 
