@@ -1,10 +1,16 @@
-# .github/workflows/lint.yml
 name: Lint & Format
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - chore/**
+      - feat/**
+      - fix/**
+      - chore/setup-eslint-prettier-husky
   pull_request:
+    branches:
+      - main
 
 jobs:
   validate:
