@@ -1,0 +1,31 @@
+name: CI – Lint & Format
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint (no warnings allowed)
+        run: npm run lint
+        # This runs: eslint "src/**/*.{js,jsx}" --max-warnings=0
+
+      - name: Run Prettier Check
+        run: npm run format:check
+        # This runs: prettier --check "src/**/*.{js,jsx,css,json,md}"
