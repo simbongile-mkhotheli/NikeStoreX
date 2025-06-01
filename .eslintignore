@@ -1,0 +1,10 @@
+# Ignore images, build output, node_modules
+node_modules/
+dist/
+build/
+
+# Don’t try to lint PNGs, SVGs, etc.
+src/assets/
+
+# If you generate other folders (e.g. coverage), ignore them too:
+coverage/
