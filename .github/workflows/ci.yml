@@ -10,9 +10,17 @@ jobs:
   lint-and-format:
     runs-on: ubuntu-latest
     steps:
+      # ────────────────────────────────────────────────────────────────────────────
+      # 1. Checkout full history so we can compute diffs against main
+      # ────────────────────────────────────────────────────────────────────────────
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
+      # ────────────────────────────────────────────────────────────────────────────
+      # 2. Set up Node.js and install deps
+      # ────────────────────────────────────────────────────────────────────────────
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -22,10 +30,74 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run ESLint (no warnings allowed)
-        run: npm run lint
-        # This runs: eslint "src/**/*.{js,jsx}" --max-warnings=0
+      # ────────────────────────────────────────────────────────────────────────────
+      # 3. Find all added/modified files in this PR or push (vs main)
+      # ────────────────────────────────────────────────────────────────────────────
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v34
+        with:
+          base-branch: main
 
+      # ────────────────────────────────────────────────────────────────────────────
+      # 4. Filter for JS/JSX/TS/TSX so ESLint only sees changed code
+      # ────────────────────────────────────────────────────────────────────────────
+      - name: Filter JS/TS files
+        id: filter-eslint
+        run: |
+          files=$(echo "${{ steps.changed-files.outputs.added_modified_files }}" \
+            | tr ',' '\n' \
+            | grep -E '\.(js|jsx|ts|tsx)$' || true)
+
+          if [ -z "$files" ]; then
+            echo "no_eslint_targets=true" >>"$GITHUB_OUTPUT"
+          else
+            echo "no_eslint_targets=false" >>"$GITHUB_OUTPUT"
+            echo "eslint_targets=$(echo $files | tr '\n' ' ')" >>"$GITHUB_OUTPUT"
+          fi
+
+      - name: Skip ESLint if no JS/TS changed
+        if: steps.filter-eslint.outputs.no_eslint_targets == 'true'
+        run: |
+          echo "No .js/.jsx/.ts/.tsx changes detected—skipping ESLint."
+          exit 0
+
+      # ────────────────────────────────────────────────────────────────────────────
+      # 5. Run ESLint on only the changed JS/TS files
+      # ────────────────────────────────────────────────────────────────────────────
+      - name: Run ESLint
+        run: |
+          echo "Linting only: ${{ steps.filter-eslint.outputs.eslint_targets }}"
+          npx eslint ${{ steps.filter-eslint.outputs.eslint_targets }} --max-warnings=0
+
+      # ────────────────────────────────────────────────────────────────────────────
+      # 6. Filter for Prettier‐targeted files (CSS/JSON/MD/JS/TS/etc.)
+      # ────────────────────────────────────────────────────────────────────────────
+      - name: Filter Prettier targets
+        id: filter-prettier
+        run: |
+          all_changed=$(echo "${{ steps.changed-files.outputs.added_modified_files }}" \
+            | tr ',' '\n')
+          pt_files=$(echo "$all_changed" \
+            | grep -E '\.(js|jsx|ts|tsx|css|json|md)$' || true)
+
+          if [ -z "$pt_files" ]; then
+            echo "no_prettier_targets=true" >>"$GITHUB_OUTPUT"
+          else
+            echo "no_prettier_targets=false" >>"$GITHUB_OUTPUT"
+            echo "prettier_targets=$(echo $pt_files | tr '\n' ' ')" >>"$GITHUB_OUTPUT"
+          fi
+
+      - name: Skip Prettier if no matching files
+        if: steps.filter-prettier.outputs.no_prettier_targets == 'true'
+        run: |
+          echo "No Prettier‐targeted files changed—skipping format check."
+          exit 0
+
+      # ────────────────────────────────────────────────────────────────────────────
+      # 7. Run Prettier Check on only those changed files
+      # ────────────────────────────────────────────────────────────────────────────
       - name: Run Prettier Check
-        run: npm run format:check
-        # This runs: prettier --check "src/**/*.{js,jsx,css,json,md}"
+        run: |
+          echo "Prettier‐checking: ${{ steps.filter-prettier.outputs.prettier_targets }}"
+          npx prettier --check ${{ steps.filter-prettier.outputs.prettier_targets }}
