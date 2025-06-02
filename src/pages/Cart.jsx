@@ -83,9 +83,17 @@ const Cart = memo(() => {
                 <button
                   type="button"
                   className="button-theme bg-theme-cart text-white"
-                  onClick={() => {
-                    // Add checkout logic here
-                    console.log('Proceeding to checkout...')
+                  onClick={async () => {
+                    try {
+                      // Simulate payment processing
+                      await new Promise((resolve) => setTimeout(resolve, 1000))
+                      // Clear cart after successful checkout
+                      dispatch(setClearCartItems())
+                      // Close cart
+                      dispatch(setCloseCart())
+                    } catch (error) {
+                      console.error('Checkout error:', error)
+                    }
                   }}
                 >
                   Check Out
