@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   Cart,
   FlexContent,
@@ -7,7 +7,7 @@ import {
   Navbar,
   Sales,
   Stories,
-} from './components';
+} from './components'
 import {
   heroapi,
   popularsales,
@@ -16,7 +16,7 @@ import {
   sneaker,
   story,
   footerAPI,
-} from './data/data.js';
+} from './data/data.js'
 const App = () => {
   return (
     <>
@@ -32,7 +32,7 @@ const App = () => {
       </main>
       <Footer footerAPI={footerAPI} />
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

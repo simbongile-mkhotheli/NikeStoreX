@@ -10,8 +10,8 @@ import {
   setGetTotals,
 } from '../app/features/cart/cartSlice.js'
 // Lazy-loaded components with error boundaries
-const CartCount = lazy(() => import('../components/cart/CartCount.jsx'))
-const CartEmpty = lazy(() => import('../components/cart/CartEmpty.jsx'))
+const CartCount = lazy(() => import('../components/cart/CartCount.tsx'))
+const CartEmpty = lazy(() => import('../components/cart/CartEmpty.tsx'))
 const CartItem = lazy(() => import('../components/cart/CartItem.jsx'))
 // Loading Component
 const LoadingSpinner = () => (
