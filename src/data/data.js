@@ -1,35 +1,35 @@
-import heroimg from '../assets/hero.png';
+import heroimg from '../assets/hero.png'
 
-import hightlightimg from '../assets/hightlightimg.png';
-import sneakershoe from '../assets/sneaker.png';
+import hightlightimg from '../assets/hightlightimg.png'
+import sneakershoe from '../assets/sneaker.png'
 
-import clip from '../assets/video/clip.mp4';
-import vcover1 from '../assets/video/vcover1.png';
-import vcover2 from '../assets/video/vcover2.png';
-import vcover3 from '../assets/video/vcover3.png';
+import clip from '../assets/video/clip.mp4'
+import vcover1 from '../assets/video/vcover1.png'
+import vcover2 from '../assets/video/vcover2.png'
+import vcover3 from '../assets/video/vcover3.png'
 
-import psale1 from '../assets/nike-air-red.png';
-import psale2 from '../assets/nike-adapt-bb.png';
-import psale3 from '../assets/nike-adapt-bb-smart.png';
+import psale1 from '../assets/nike-air-red.png'
+import psale2 from '../assets/nike-adapt-bb.png'
+import psale3 from '../assets/nike-adapt-bb-smart.png'
 
-import product1 from '../assets/product1.png';
-import product2 from '../assets/product2.png';
-import product3 from '../assets/product3.png';
-import product4 from '../assets/product4.png';
-import product5 from '../assets/product5.png';
-import product6 from '../assets/product6.png';
-import product7 from '../assets/product7.png';
-import product8 from '../assets/product8.png';
-import product9 from '../assets/product9.png';
-import product10 from '../assets/product10.png';
-import product11 from '../assets/product11.png';
-import product12 from '../assets/product12.png';
+import product1 from '../assets/product1.png'
+import product2 from '../assets/product2.png'
+import product3 from '../assets/product3.png'
+import product4 from '../assets/product4.png'
+import product5 from '../assets/product5.png'
+import product6 from '../assets/product6.png'
+import product7 from '../assets/product7.png'
+import product8 from '../assets/product8.png'
+import product9 from '../assets/product9.png'
+import product10 from '../assets/product10.png'
+import product11 from '../assets/product11.png'
+import product12 from '../assets/product12.png'
 
-import facebook from '../assets/facebook.svg';
-import instagram from '../assets/instagram.svg';
-import twitter from '../assets/twitter.svg';
-import youtube from '../assets/youtube.svg';
-import messenger from '../assets/messenger.svg';
+import facebook from '../assets/facebook.svg'
+import instagram from '../assets/instagram.svg'
+import twitter from '../assets/twitter.svg'
+import youtube from '../assets/youtube.svg'
+import messenger from '../assets/messenger.svg'
 
 const heroapi = {
   title: 'Play With Electric Nike',
@@ -37,9 +37,9 @@ const heroapi = {
   img: heroimg,
   btntext: 'Explore Product',
   videos: [
-    { imgsrc: vcover1, clip: clip },
-    { imgsrc: vcover2, clip: clip },
-    { imgsrc: vcover3, clip: clip },
+    { imgsrc: vcover1, clip },
+    { imgsrc: vcover2, clip },
+    { imgsrc: vcover3, clip },
   ],
   sociallinks: [
     { icon: facebook },
@@ -48,7 +48,7 @@ const heroapi = {
     { icon: twitter },
     { icon: youtube },
   ],
-};
+}
 
 const popularsales = {
   title: 'Popular Sales',
@@ -87,7 +87,7 @@ const popularsales = {
       shadow: 'shadow-lg shadow-violet-500',
     },
   ],
-};
+}
 
 const highlight = {
   heading: 'HIGHLIGHTS',
@@ -96,7 +96,7 @@ const highlight = {
   btn: 'Explore More',
   url: 'https://www.nike.com/launch/t/nocta-hot-step-black-gold',
   img: hightlightimg,
-};
+}
 
 const sneaker = {
   heading: 'FEATURED',
@@ -105,7 +105,7 @@ const sneaker = {
   btn: 'Explore More',
   url: 'https://sneakernews.com/2022/03/21/nike-lebron-2-retro-white-midnight-navy-varsity-crimson-dr0826-100/',
   img: sneakershoe,
-};
+}
 
 const toprateslaes = {
   title: 'Top Rated Sales',
@@ -243,7 +243,7 @@ const toprateslaes = {
       shadow: 'shadow-lg shadow-blue-500',
     },
   ],
-};
+}
 
 const story = {
   title: 'Top Stories',
@@ -339,7 +339,7 @@ const story = {
       btn: 'Read More',
     },
   ],
-};
+}
 
 const footerAPI = {
   titles: [
@@ -373,7 +373,7 @@ const footerAPI = {
       { link: 'Send Us Feeback' },
     ],
   ],
-};
+}
 
 export {
   heroapi,
@@ -383,4 +383,4 @@ export {
   highlight,
   toprateslaes,
   popularsales,
-};
+}

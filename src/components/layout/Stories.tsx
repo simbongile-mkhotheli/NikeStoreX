@@ -1,11 +1,9 @@
-import React, { lazy, Suspense } from 'react';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/splide/css';
-import { HashtagIcon, HeartIcon } from '@heroicons/react/24/solid';
-import { ClockIcon } from '@heroicons/react/24/outline';
-import { truncate } from 'lodash';
-
-const Title = lazy(() => import('../utils/Title'));
+import React, { lazy, Suspense } from 'react'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+const Title = lazy(() => import('../utils/Title.tsx'))
+import { HashtagIcon, HeartIcon } from '@heroicons/react/24/solid'
+import { ClockIcon } from '@heroicons/react/24/outline'
+import { truncate } from 'lodash'
 
 const Stories = ({ story: { title, news } }) => {
   const splideOptions = {
@@ -24,7 +22,7 @@ const Stories = ({ story: { title, news } }) => {
       500: { perPage: 1.3 },
       425: { perPage: 1 },
     },
-  };
+  }
 
   return (
     <div className="nike-container mb-11">
@@ -87,7 +85,7 @@ const Stories = ({ story: { title, news } }) => {
         </Splide>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Stories;
+export default Stories

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { StarIcon, ShoppingBagIcon } from '@heroicons/react/24/solid';
-import { setAddItemToCart, setOpenCart } from '@/app/features/cart/cartSlice';
+import { setAddItemToCart, setOpenCart } from '../../app/features/cart/cartSlice';
 
 const Item = ({
   ifExists,

@@ -1,35 +1,35 @@
 // src/components/layout/Navbar.jsx
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   selectTotalQuantity,
   setOpenCart,
-} from '../../app/features/cart/cartSlice.js';
+} from '../../app/features/cart/cartSlice.js'
 
 import {
   HeartIcon,
   MagnifyingGlassIcon,
   ShoppingBagIcon,
-} from '@heroicons/react/24/outline';
-import logo from '../../assets/logo.png';
+} from '@heroicons/react/24/outline'
+import logo from '../../assets/logo.png'
 
 const Navbar = () => {
-  const [navState, setNavState] = useState(false);
-  const dispatch = useDispatch();
-  const totalQuantity = useSelector(selectTotalQuantity);
+  const [navState, setNavState] = useState(false)
+  const dispatch = useDispatch()
+  const totalQuantity = useSelector(selectTotalQuantity)
 
   const onCartToggle = () => {
-    dispatch(setOpenCart());
-  };
+    dispatch(setOpenCart())
+  }
 
   const onNavScroll = () => {
-    setNavState(window.scrollY > 30);
-  };
+    setNavState(window.scrollY > 30)
+  }
 
   useEffect(() => {
-    window.addEventListener('scroll', onNavScroll);
-    return () => window.removeEventListener('scroll', onNavScroll);
-  }, []);
+    window.addEventListener('scroll', onNavScroll)
+    return () => window.removeEventListener('scroll', onNavScroll)
+  }, [])
 
   return (
     <header
@@ -87,7 +87,7 @@ const Navbar = () => {
         </ul>
       </nav>
     </header>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

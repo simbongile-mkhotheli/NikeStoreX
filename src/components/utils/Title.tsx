@@ -1,6 +1,8 @@
 import React from 'react';
-
-const Title = ({ title }) => {
+interface TitleProps {
+  title: string;
+}
+const Title: React.FC<TitleProps> = ({ title }) => {
   return (
     <>
       <div className="grid items-center">
@@ -14,5 +16,4 @@ const Title = ({ title }) => {
     </>
   );
 };
-
 export default Title;

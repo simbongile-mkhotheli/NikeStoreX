@@ -1,7 +1,7 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react'
 
-const Title = lazy(() => import('../utils/Title'));
-const Item = lazy(() => import('../utils/Item'));
+const Title = lazy(() => import('../utils/Title.tsx'))
+const Item = lazy(() => import('../utils/Item.tsx'))
 
 const Sales = ({ ifExists, endpoint: { title, items } }) => {
   return (
@@ -12,7 +12,6 @@ const Sales = ({ ifExists, endpoint: { title, items } }) => {
         >
           <Title title={title} />
         </Suspense>
-
         <div
           className={`grid items-center justify-items-center gap-7 lg:gap-5 mt-7 ${ifExists ? 'grid-cols-3 xl:grid-cols-2 sm:grid-cols-1' : 'grid-cols-4 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'}`}
         >
@@ -26,9 +25,10 @@ const Sales = ({ ifExists, endpoint: { title, items } }) => {
             ))}
           </Suspense>
         </div>
+        console.log(items)
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Sales;
+export default Sales

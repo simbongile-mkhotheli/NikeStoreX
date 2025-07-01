@@ -1,6 +1,6 @@
-import React from 'react';
-import Clips from '../utils/Clips';
-import SocialLink from '../utils/SocialLink';
+import React from 'react'
+import Clips from '../utils/Clips.tsx'
+import SocialLink from '../utils/SocialLink.tsx'
 
 const Hero = ({
   heroapi: { title, subtitle, btntext, img, sociallinks, videos },
@@ -45,7 +45,7 @@ const Hero = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
